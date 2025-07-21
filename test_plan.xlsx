@@ -1,1 +1,98 @@
-
+VERIFICATION PLAN					
+S.NO.	FEATURE NAME	FEATURE DESCRIPTION	TESTCASE	EXPECTED OUTPUT	TEST STATUS
+BASIC FUNCTIONALITY					
+					
+1	Reset check	To check if reset is setting all output to 0.	RST = 0	o/p = 0	.pending
+2	CLKEN check	To check if ALU is working on the posedge of the clk.	CLKEN = 1	-	.pending
+ARITHMETIC OPERATIONS					
+3	Addition Unsigned.	Checks for mode = 1, INP_VALID = 2'b01/2'b10 should be high, and within 16 cycles, if INP_VALID = 2'b11 is high,, the intended operation should be performed and output should be available after 1 clk cycles.	-	-	.pending
+					
+		Checks for mode = 1, INP_VALID = 2'b11, both the operands are valid ,the intended operation should be performed and output should be available after 1 clk cycles.	-	-	.pending
+	- carryout case				
+4	Sub Unsigned	Checks for mode = 1, INP_VALID = 2'b01/2'b10 should be high, and within 16 cycles, if INP_VALID = 2'b11 is high,, the intended operation should be performed and output should be available after 1 clk cycles.	-	-	.pending
+					
+		Checks for mode = 1, INP_VALID = 2'b11, both the operands are valid ,the intended operation should be performed and output should be available after 1 clk cycles.	-	-	.pending
+	-overflow case				
+					
+5	ADD_Cin 	Checks for mode = 1, INP_VALID = 2'b01/2'b10 should be high, and within 16 cycles, if INP_VALID = 2'b11 is high,, the intended operation should be performed and output should be available after 1 clk cycles.	-	-	.pending
+					
+		Checks for mode = 1, INP_VALID = 2'b11, both the operands are valid ,the intended operation should be performed and output should be available after 1 clk cycles.	-	-	.pending
+	-carryout case				
+6	SUB-Cin 	Checks for mode = 1, INP_VALID = 2'b01/2'b10 should be high, and within 16 cycles, if INP_VALID = 2'b11 is high,, the intended operation should be performed and output should be available after 1 clk cycles.	-	-	.pending
+					
+		Checks for mode = 1, INP_VALID = 2'b11, both the operands are valid ,the intended operation should be performed and output should be available after 1 clk cycles.		-	.pending
+	-overflow case				
+7	Increment A	Checks for mode = 1, INP_VALID = 2'b01/2b'11 should be high,  the intended operation should be performed and output should be available after 1 clk cycles.	->	-	.pending
+					
+	-carryout case				
+8	Decrement  A	Checks for mode = 1, INP_VALID = 2'b01/2b'11 should be high,  the intended operation should be performed and output should be available after 1 clk cycles.	-	-	.pending
+	-overflow case				
+					
+9	Increment B	Checks for mode = 1, INP_VALID = 2'b10/2'b11, should be high,  the intended operation should be performed and output should be available after 1 clk cycles.	-	-	.pending
+	- carryout case				
+					
+10	Decrement B	Checks for mode = 1, INP_VALID = 2'b10/2'b11, should be high,  the intended operation should be performed and output should be available after 1 clk cycles.	-	-	.pending
+	- overflow case 				
+					
+11	Increment and multiply	Checks for mode = 1, INP_VALID = 2'b01 should be high, and within 16 cycles, if INP_VALID = 2'b10 is high, and vice versa, the intended operation should be performed and output should be available after 2 clk cycles.	-	-	.pending
+					
+		Checks for mode = 1, INP_VALID = 2'b11, both the operands are valid ,the intended operation should be performed and output should be available after 2 clk cycles.	-	-	.pending
+					
+12	Shift and Multiply	Checks for mode = 1, INP_VALID = 2'b01 should be high, and within 16 cycles, if INP_VALID = 2'b10 is high, and vice versa, the intended operation should be performed and output should be available after 2 clk cycles.	-	-	.pending
+					
+		Checks for mode = 1, INP_VALID = 2'b11, both the operands are valid ,the intended operation should be performed and output should be available after 2 clk cycles.	-	-	.pending
+					
+13	Comparator Operator	Checks for mode = 1, INP_VALID = 2'b01 should be high, and within 16 cycles, if INP_VALID = 2'b10 is high, and vice versa, the intended operation should be performed and output should be available after 1 clk cycles.	-	-	.pending
+					
+		Checks for mode = 1, INP_VALID = 2'b11, both the operands are valid ,the intended operation should be performed and output should be available after 1 clk cycles.	-	-	.pending
+					
+LOGICAL OPERATIONS					
+					
+14	And	Checks for mode = 0, INP_VALID = 2'b01 should be high, and within 16 cycles, if INP_VALID = 2'b10 /2'b11 is high, and vice versa, the intended operation should be performed output should be available 1 clk cycles later.	-	-	.pending
+					
+		Checks for mode = 0, INP_VALID = 2'b11, both the operands are valid ,the intended operation should be performed and output should be available after 1 clk cycles.	-	-	.pending
+					
+15	Nand	Checks for mode = 0, INP_VALID = 2'b01 should be high, and within 16 cycles, if INP_VALID = 2'b10 is high, and vice versa, the intended operation should be performed output should be available 1 clk cycles later.	-	-	.pending
+					
+		Checks for mode = 0, INP_VALID = 2'b11, both the operands are valid ,the intended operation should be performed and output should be available after 1 clk cycles.	-	-	.pending
+					
+16	Or	Checks for mode = 0, INP_VALID = 2'b01 should be high, and within 16 cycles, if INP_VALID = 2'b10 is high, and vice versa, the intended operation should be performed output should be available 1 clk cycles later.	-	-	.pending
+					
+		Checks for mode = 0, INP_VALID = 2'b11, both the operands are valid ,the intended operation should be performed and output should be available after 1 clk cycles.	-	-	.pending
+					
+17	Nor	Checks for mode = 0, INP_VALID = 2'b01 should be high, and within 16 cycles, if INP_VALID = 2'b10 is high, and vice versa, the intended operation should be performed output should be available 1 clk cycles later.	-	-	.pending
+					
+		Checks for mode = 0, INP_VALID = 2'b11, both the operands are valid ,the intended operation should be performed and output should be available after 1 clk cycles.	-	-	.pending
+					
+18	Xor	Checks for mode = 0, INP_VALID = 2'b01 should be high, and within 16 cycles, if INP_VALID = 2'b10 is high, and vice versa, the intended operation should be performed output should be available 1 clk cycles later.	-	-	.pending
+					
+		Checks for mode = 0, INP_VALID = 2'b11, both the operands are valid ,the intended operation should be performed and output should be available after 1 clk cycles.	-	-	.pending
+					
+19	Xnor	Checks for mode = 0, INP_VALID = 2'b01 should be high, and within 16 cycles, if INP_VALID = 2'b10 is high, and vice versa, the intended operation should be performed output should be available 1 clk cycles later.	-	-	.pending
+					
+		Checks for mode = 0, INP_VALID = 2'b11, both the operands are valid ,the intended operation should be performed and output should be available after 1 clk cycles.	-	-	.pending
+					
+20	Not A	Checks for mode = 0, INP_VALID = 2'b01/2'b11, should be high,  the intended operation should be performed and output should be available 1 clk cycles later.	-	-	.pending
+					
+21	Not B	Checks for mode = 0, INP_VALID = 2'b10/2b'11, should be high,  the intended operation should be performed and after the output should be available after 1 clk cycles.	-	-	.pending
+					
+22	Shift right A by 1 	Checks for mode = 0, INP_VALID = 2'b01/2'b11, should be high,  the intended operation should be performed and output should be available 1 clk cycles later.	-	-	.pending
+					
+23	Shift left A by 1	Checks for mode = 0, INP_VALID = 2'b01/2b'11, should be high,  the intended operation should be performed and output should be available 1 clk cycles later.	-	-	.pending
+					
+24	Shift right B by 1	Checks for mode = 0, INP_VALID = 2'b10/2b'11, should be high,  the intended operation should be performed and after the output should be available after 1 clk cycles.	-	-	.pending
+					
+25	Shift left B by 1	Checks for mode = 0, INP_VALID = 2'b10/2b'11, should be high,  the intended operation should be performed and after the output should be available after 1 clk cycles.	-	-	.pending
+					
+26	Rotate Left A by B	Checks for mode = 0, INP_VALID = 2'b01 should be high, and within 16 cycles, if INP_VALID = 2'b10 is high, and vice versa, the intended operation should be performed after 1 clk cycle.	-	-	.pending
+					
+					
+27	Rotate right A by B	Checks for mode = 0 INP_VALID = 2'b01 should be high, and within 16 cycles, if INP_VALID = 2'b10 is high, and vice versa, the intended operation should be performed after 1 clk cycle.	-	-	.pending
+					
+ERROR CASES					
+					
+28	Rotate  Error	For eg, for 8-bit operands, if OPB[7:4], any bit is 1, then it is an error.	-	-	.pending
+					
+29	Two Operand Operation Error	If one operand is valid and within 16 cycles other operand is not valid for an two-operand command, then it is an error	-	-	.pending
+					
+30	Invalid CMD	If the CMD input is out of range then it as to give an error.	-	-	.pending
