@@ -7,3 +7,5 @@
 ### VERFICATION_PLAN :
 - Contains the test,functional coverage and assertion plan for the project.
   
+### VERFICATION_PLAN :
+- Contains the code for all the components of the testbench for the project.
