@@ -19,6 +19,7 @@ interface alu_intf(input bit clk,RST,CE);
   clocking drv_cb @(posedge clk); //clocking block for driver
     default input #0 output #0;
     output OPA,OPB,Cin,mode,inp_valid,CMD;
+    input RST;
   endclocking
 
   clocking mon_cb@(posedge clk); // clocking block for the monitor
@@ -39,46 +40,45 @@ interface alu_intf(input bit clk,RST,CE);
 //endinterface
 
 // reset output assertions.
-/*
-property rst_out;
-  @(posedge clk) RST |-> ##[0:5] (RES == 9'bzzzzzzzz && ERR == 1'bz && E == 1'bz && G == 1'bz && L == 1'bz && COUT == 1'bz && OFLOW == 1'bz);
-endproperty
+    property VERIFY_RESET;
+      @(posedge clk) RST |=> (RES === 9'bzzzzzzzzz && ERR === 1'bz && E === 1'bz && G === 1'bz && L === 1'bz && COUT === 1'bz && OFLOW === 1'bz);
+    endproperty
 
-assert property(rst_out)
-  $info("RESET PASSED");
-  else
-    $info(" RESET FAILED");
+    assert property(VERIFY_RESET) $info($time, "passed");else $info($time, "ERROR");
+
 
 // CLOCK EN check
 
 
-property clk_en_ppt;
-  @(posedge clk) disable iff (RST) !(CE) |=> (CE);
+property CE_ASSERT;
+  @(posedge clk) !(CE) |-> ##[1:$] (CE);
 endproperty
 
-assert property(clk_en_ppt)
+assert property(CE_ASSERT)
   $info("CLK_EN PASSEED");
   else
     $info("CLK_EN FAILED");
 // property for 16 cycle err
-property timeout_ppt;
-  @(posedge clk) disable iff(RST) (CE && (inp_valid == 2'b10 || inp_valid == 2'b01)) |-> ##16 ERR;
+property TIMEOUT_16Clk;
+    @(posedge clk) disable iff(RST)(CE && (inp_valid == 2'b01 || inp_valid == 2'b10)) |-> !(inp_valid == 2'b11) [*16] |-> ##1 ERR;
+
 endproperty
 
-assert property (timeout_ppt)
-  $info("Err set");
-  else
-    $info("Err not set");
+  assert property (TIMEOUT_16Clk)
+    $info("passed");
+    else
+            $info("failed");
+
 // validity
 
-property check_valid_ppt;
-  @(posedge clk) disable iff(RST) CE |-> $isunknown({OPA,OPB,inp_valid,Cin,mode,CMD});
+property VALID_INPUTS_CHECK;
+  @(posedge clk) disable iff(RST) CE |-> not($isunknown({OPA,OPB,inp_valid,Cin,mode,CMD}));
 endproperty
 
-assert property(check_valid_ppt)
+assert property(VALID_INPUTS_CHECK)
 $info("inputs valid");
   else
     $info("inputs not valid");
-*/
+
 
 endinterface
