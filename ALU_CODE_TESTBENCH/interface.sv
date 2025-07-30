@@ -80,7 +80,7 @@ $info("inputs valid");
   else
     $info("inputs not valid");
 property ROTATE_OP_CHECK;
-  @(posedge clk) disable iff(RST) CE |-> ((CMD == 8 || CMD == 9) && (`SHIFT_WIDTH + 1)) ##1 ERR;
+  @(posedge clk) disable iff(RST) CE |-> ((CMD == 12 || CMD == 13) && (`SHIFT_WIDTH + 1)) ##1 ERR;
 endproperty
 
 assert property (ROTATE_OP_CHECK)
