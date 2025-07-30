@@ -80,13 +80,13 @@ $info("inputs valid");
   else
     $info("inputs not valid");
 property ROTATE_OP_CHECK;
-  @(posedge clk) disable iff(RST) CE |-> ((CMD == 12 || CMD == 13) && (`SHIFT_WIDTH + 1)) ##1 ERR;
+  @(posedge clk) disable iff(RST) (CE && (mode == 0) && (CMD == 12 || CMD == 13) && OPB >= 16) |=> ERR;
 endproperty
 
-assert property (ROTATE_OP_CHECK)
-  $info("rotate err set");
+assert property(ROTATE_OP_CHECK)
+  $info("ERR SET FOR OPB > 16");
 else
-  $warning("rotate err not set");
+  $warning("ERR NOT SET FOR OPB > 16");
 
 
 endinterface
