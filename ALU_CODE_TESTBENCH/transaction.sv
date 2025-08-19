@@ -26,7 +26,7 @@ class alu_transaction;
 
     //constraint c1 {inp_valid == 2'b11 ;mode == 1;CMD == 9;OPB inside {[0:7]};OPA inside {[0:7]};/*inp_valid == 2'b11;*/}
   // function created to make blueprint using deepcopy
-  function alu_transaction copy ();
+  virtual function alu_transaction copy ();
     copy = new();
     copy.OPA = this.OPA;
     copy.OPB = this.OPB;
@@ -34,6 +34,7 @@ class alu_transaction;
     copy.mode = this.mode;
     copy.inp_valid = this.inp_valid;
     copy.CMD = this.CMD;
+    return copy;
   endfunction
 endclass
   // using blueprint method to run testcases of a single operand type arithmetic operations.
